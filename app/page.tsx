@@ -31,8 +31,13 @@ export default function Home() {
         <form className={styles.formContainer}>
           <h1>Welcome Back!</h1>
           <p className={styles.para}>Login to your account and start connecting with the world. Your journey begins here.</p>
+
+          <label className={styles.label} htmlFor="email">Username</label>
+          <input placeholder="Username" type="text" name="email" id="email" />
+
+
           <label className={styles.label} htmlFor="email">Email</label>
-          <input placeholder="Enter Email" type="text" name="email" id="email" />
+          <input placeholder="Enter Email" type="email" name="email" id="email" />
           <label className={styles.label} htmlFor="pass">Password</label>
           <input placeholder="Enter Password" type="password" name="password" id="pass" />
           <div className={styles.mor}>
@@ -40,7 +45,7 @@ export default function Home() {
             <label className={styles.label} htmlFor="check">Remember Me</label>
             <a href="">Forgot Password?</a>
           </div>
-          <input className={styles.log} type="submit" value="Login" id="login-btn" />
+          <input className={styles.log} type="submit" value="Update" id="login-btn" />
 
           <div className={styles.container}>
             <div className={styles.line}></div>
@@ -63,9 +68,10 @@ export default function Home() {
       </div>
 
       <div className={styles.image}>
-        <h1>New here? Sign up and unlock amazing features!</h1>
-        <button className={styles.sign}>Sign Up</button>
+        {/* <h1>New here? Sign up and unlock amazing features!</h1>
+        <button className={styles.sign}>Sign Up</button> */}
       </div>
+
     </div>
     
     
