@@ -1,7 +1,13 @@
+"use client"
 import Image from 'next/image'
 import Head from 'next/head'
 import styles from './login.module.css'
+import React, {useState} from 'react'
 export default function Home() {
+  const [name, setName]= useState('')
+  const [email, setEmail]= useState('')
+  console.log("name: ", name)
+  console.log("email: ", email)
   return (
    <>
 <Head>
@@ -33,11 +39,13 @@ export default function Home() {
           <p className={styles.para}>Login to your account and start connecting with the world. Your journey begins here.</p>
 
           <label className={styles.label} htmlFor="email">Username</label>
-          <input placeholder="Username" type="text" name="email" id="email" />
+          <input onChange={(e)=> setName(e.target.value)} placeholder="Username" type="text" name="name" id="email" />
 
 
           <label className={styles.label} htmlFor="email">Email</label>
-          <input placeholder="Enter Email" type="email" name="email" id="email" />
+          <input 
+          onChange={(e)=> setEmail(e.target.value)} 
+          placeholder="Enter Email" type="email" name="email" id="email" />
           <label className={styles.label} htmlFor="pass">Password</label>
           <input placeholder="Enter Password" type="password" name="password" id="pass" />
           <div className={styles.mor}>
