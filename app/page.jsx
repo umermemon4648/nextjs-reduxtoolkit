@@ -3,11 +3,22 @@ import Image from 'next/image'
 import Head from 'next/head'
 import styles from './login.module.css'
 import React, {useState} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { update } from '@/redux/userSlice'
 export default function Home() {
+  const dispatch = useDispatch()
+  const user =  useSelector((state)=> state.user)
   const [name, setName]= useState('')
   const [email, setEmail]= useState('')
   console.log("name: ", name)
   console.log("email: ", email)
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    setName(name)
+    setEmail(email)
+    dispatch(update({name, email}))
+  }
   return (
    <>
 <Head>
@@ -27,25 +38,25 @@ export default function Home() {
   />
 </Head>
 
-        
+        {/* <h1>You have name: {myname}</h1> */}
    <div className={styles.container}>
       <button className={styles.btn}>
         <i data-feather="arrow-left"></i> Back Home
       </button>
 
       <div className={styles.login}>
-        <form className={styles.formContainer}>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
           <h1>Welcome Back!</h1>
           <p className={styles.para}>Login to your account and start connecting with the world. Your journey begins here.</p>
 
           <label className={styles.label} htmlFor="email">Username</label>
-          <input onChange={(e)=> setName(e.target.value)} placeholder="Username" type="text" name="name" id="email" />
+          <input onChange={(e)=> setName(e.target.value)} placeholder={user.name} type="text" name="name" id="email" />
 
 
           <label className={styles.label} htmlFor="email">Email</label>
           <input 
           onChange={(e)=> setEmail(e.target.value)} 
-          placeholder="Enter Email" type="email" name="email" id="email" />
+          placeholder={user.email} type="email" name="email" id="email" />
           <label className={styles.label} htmlFor="pass">Password</label>
           <input placeholder="Enter Password" type="password" name="password" id="pass" />
           <div className={styles.mor}>
